@@ -1,2 +1,0 @@
-# geev
-test technique

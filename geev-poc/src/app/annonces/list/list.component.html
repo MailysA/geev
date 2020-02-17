@@ -1,0 +1,14 @@
+<h1>GEEV</h1>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div *ngFor="let annonce of annonces">
+          <div *ngFor="let item of annonce">
+              <img src="{{item.pictures}}"/>
+              <h5>{{item.title}}</h5>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </div>
