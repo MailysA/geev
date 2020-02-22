@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Annonces } from 'src/app/model/Annonces.js';
 import { AnnoncesService } from 'src/app/shared/annonces.service.js';
 import * as jsonData from '../../../assets/data.json';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-list',
@@ -12,6 +13,8 @@ export class ListComponent implements OnInit {
 
   annonces: Array<any> = [];
   annoncesData: Annonces;
+  pageNumber: string = '1';
+  limit: string = '1';
 
   constructor(private annoncesService: AnnoncesService) { 
     Object.values(jsonData).forEach(annonce => {
@@ -20,7 +23,7 @@ export class ListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.annoncesService.getAnnonces().subscribe(annonces => this.annoncesData = annonces)
+    this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData = annonces)
     console.log(this.annonces)
   }
 
