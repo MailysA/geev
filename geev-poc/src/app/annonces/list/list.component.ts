@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Annonces } from 'src/app/model/Annonces.js';
 import { AnnoncesService } from 'src/app/shared/annonces.service.js';
 import * as jsonData from '../../../assets/data.json';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-list',
@@ -23,8 +22,13 @@ export class ListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData = annonces)
+    this.getAnnonces()
     console.log(this.annonces)
+  }
+  
+  getAnnonces(): Array<Annonces>{
+    //  this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData = annonces)
+    return this.annonces;
   }
 
   getDetail(): void {
