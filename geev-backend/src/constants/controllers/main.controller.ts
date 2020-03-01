@@ -12,5 +12,7 @@ export class Controller {
   public routes() {
 
     this.app.route('/annonces').get(this.annonceService.getAnnonces);
+
+    this.app.route('/annonces/:id').get(this.annonceService.getAnnonce)
   }
 }
