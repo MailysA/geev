@@ -1,0 +1,28 @@
+{
+  "name": "geev",
+  "version": "1.0.0",
+  "description": "backend rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MailysA/geev.git"
+  },
+  "author": "Mailys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MailysA/geev/issues"
+  },
+  "homepage": "https://github.com/MailysA/geev#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.2"
+  }
+}
