@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
   })
 export class AnnoncesService {
 
+     env = "http://localhost:9001";
+
     constructor(protected http: HttpClient) {
     }
 
@@ -16,6 +18,6 @@ export class AnnoncesService {
         let params = new HttpParams();
         params.set('pageNumber', pageNumber);
         params.set('limit', limit);
-        return this.http.get<Annonces>('/annonces', { params }).pipe(map( (annonces: Annonces) =>  new Annonces(annonces)))
+        return this.http.get<Annonces>(`${this.env}/annonces`, { params }).pipe(map( (annonces: Annonces) =>  new Annonces(annonces)))
     }
 }

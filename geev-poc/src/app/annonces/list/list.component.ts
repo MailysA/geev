@@ -11,24 +11,23 @@ import * as jsonData from '../../../assets/data.json';
 export class ListComponent implements OnInit {
 
   annonces: Array<any> = [];
-  annoncesData: Annonces;
+  annoncesData: Array<any> = [];
   pageNumber: string = '1';
   limit: string = '1';
 
   constructor(private annoncesService: AnnoncesService) { 
-    Object.values(jsonData).forEach(annonce => {
-      this.annonces.push(annonce);
-    });
+    // Object.values(jsonData).forEach(annonce => {
+    //   this.annonces.push(annonce);
+    // });
   }
   
   ngOnInit(): void {
     this.getAnnonces()
-    console.log(this.annonces)
+    console.log(this.annoncesData)
   }
   
-  getAnnonces(): Array<Annonces>{
-    //  this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData = annonces)
-    return this.annonces;
+  getAnnonces(): any{
+    this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData.push(annonces))
   }
 
   getDetail(): void {
