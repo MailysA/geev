@@ -1,19 +1,19 @@
 import { Application } from 'express';
-import { AnnonceService } from '../services/annonce.service';
-
+import Annonce from '../models/annonce.model';
 
 export class AnnoncesController {
-  private annonceService: AnnonceService;
 
   constructor(private app: Application) {
-    this.annonceService = new AnnonceService();
-    this.controller();
+    console.log(Annonce.find());
   }
 
-  public controller() {
-
-    this.app.route('/annonces').get(this.annonceService.getAnnonces);
-
-    this.app.route('/annonces/:id').get(this.annonceService.getAnnonce)
+  public getAnnonces(){
+      this.app.get('/annonces', async () => { 
+        try{
+          return await Annonce.find();
+        }catch(err){
+          console.log(err.message); 
+        }
+    });
   }
 }
