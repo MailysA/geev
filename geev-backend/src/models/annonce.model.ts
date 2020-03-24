@@ -6,19 +6,25 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
 var connection = mongoose.connection;
 
 const annonceSchema: Schema = new Schema({
-  _id: { type: String},
-  title: { type: String},
-  pictures: { type: Array}
+  data:[
+    {_id: { type: String},
+    title: { type: String},
+    pictures: { type: Array}}
+  ]
 });
 
 const Annonce = connection.model('Annonce', annonceSchema)
 
 async function insertData(){
   const u = new Annonce(jsonData);
-  u.save();
+  u.save(function(err, u){
+    if (err) return console.error(err);
+  });
 }
 
-insertData().catch(err => console.log("erreur lors de l'insertion des données"+err.message))
+insertData();
+async function test() {console.log(await Annonce.collection.find({ data:["_id"]})) };
+test();
 
 connection.on('error', console.error.bind(console, 'MongoDB connection error:')); 
 

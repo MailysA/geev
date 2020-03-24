@@ -1,19 +1,23 @@
 import { Application } from 'express';
-import Annonce from '../models/annonce.model';
+import { Request, Response } from "express";
+import annonceModel from '../models/annonce.model';
 
 export class AnnoncesController {
 
   constructor(private app: Application) {
-    console.log(Annonce.find());
+    this.getAnnonces()
   }
 
   public getAnnonces(){
-      this.app.get('/annonces', async () => { 
-        try{
-          return await Annonce.find();
-        }catch(err){
-          console.log(err.message); 
-        }
+      this.app.get('/annonces', (req: Request, res: Response) => { 
+        annonceModel.find({}, (err, annonces) => { 
+          console.log(annonces)
+          annonces.forEach(annonce => {
+            console.log(annonce._id)
+          })
+          return res.send(annonces)
+        }).catch(err => 
+          console.log(err.message));
     });
   }
 }
