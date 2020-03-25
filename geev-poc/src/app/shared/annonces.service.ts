@@ -14,10 +14,15 @@ export class AnnoncesService {
     constructor(protected http: HttpClient) {
     }
 
-    getAnnonces(pageNumber: string, limit: string): Observable<Annonces>{
+    getAnnonces(pageNumber: string, limit: string): Observable<Annonces[]>{
         let params = new HttpParams();
         params.set('pageNumber', pageNumber);
         params.set('limit', limit);
-        return this.http.get<Annonces>(`${this.env}/annonces`, { params }).pipe(map( (annonces: Annonces) =>  new Annonces(annonces)))
+        return this.http.get<Annonces[]>(`${this.env}/annonces`, { params })
+              .pipe(map( (annonces: Object[]) => 
+                annonces.map(jsonItem => 
+                  new Annonces(jsonItem)
+                )
+              ))
     }
 }
