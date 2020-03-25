@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: 'annonces', component: ListComponent },
-  { path: 'annonce/:id',      component: DetailComponent },
+  { path: 'annonces/:id',      component: DetailComponent },
   { path: '',
     redirectTo: '/annonces',
     pathMatch: 'full'

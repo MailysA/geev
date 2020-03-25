@@ -1,7 +1,8 @@
   <div class="container">
+    <h1 class="title-geev">GEEV</h1>
         <div class="row"  *ngFor="let annonce of annoncesData">
           <div class="col-sm" *ngFor="let item of annonce">
-            <img src="{{item.pictures}}"/>
+            <img class="rounded" (click)="getDetail(item)" src="{{item.pictures}}"/>
             <h5>{{item.title}}</h5>
           </div>
         </div>

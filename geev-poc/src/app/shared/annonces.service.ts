@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Annonces } from '../model/Annonces';
+import { Annonce } from '../model/Annonce';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,14 +14,14 @@ export class AnnoncesService {
     constructor(protected http: HttpClient) {
     }
 
-    getAnnonces(pageNumber: string, limit: string): Observable<Annonces[]>{
+    getAnnonces(pageNumber: string, limit: string): Observable<Annonce[]>{
         let params = new HttpParams();
         params.set('pageNumber', pageNumber);
         params.set('limit', limit);
-        return this.http.get<Annonces[]>(`${this.env}/annonces`, { params })
+        return this.http.get<Annonce[]>(`${this.env}/annonces`, { params })
               .pipe(map( (annonces: Object[]) => 
                 annonces.map(jsonItem => 
-                  new Annonces(jsonItem)
+                  new Annonce(jsonItem)
                 )
               ))
     }

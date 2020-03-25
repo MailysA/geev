@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Annonces } from 'src/app/model/Annonces.js';
 import { AnnoncesService } from 'src/app/shared/annonces.service.js';
-import * as jsonData from '../../../assets/data.json';
+import { Router } from '@angular/router';
+import { Annonce } from 'src/app/model/Annonce';
 
 @Component({
   selector: 'app-list',
@@ -12,26 +12,25 @@ export class ListComponent implements OnInit {
 
   annonces: Array<any> = [];
   annoncesData: Array<any> = [];
-  pageNumber: string = '1';
-  limit: string = '1';
+  pageNumber: string = '20';
+  limit: string = '20';
 
-  constructor(private annoncesService: AnnoncesService) { 
-    // Object.values(jsonData).forEach(annonce => {
-    //   this.annonces.push(annonce);
-    // });
+  constructor(private annoncesService: AnnoncesService, private router: Router) { 
   }
   
   ngOnInit(): void {
     this.getAnnonces()
-    console.log(this.annoncesData)
   }
   
-  getAnnonces(): any{
-    this.annoncesService.getAnnonces(this.pageNumber, this.limit).subscribe(annonces => this.annoncesData.push(annonces))
+  getAnnonces(): any {
+    return this.annoncesService.getAnnonces(this.pageNumber, this.limit)
+    .subscribe(annonces => {
+          this.annoncesData.push(annonces)
+    })
   }
 
-  getDetail(): void {
-    // this.router.navigate(['/b']);
-}
+  getDetail(currentAnnonce: Annonce){
+    this.router.navigate(['/annonces/'+ currentAnnonce.id, { currentAnnonce }]);
+  }
 
 }
