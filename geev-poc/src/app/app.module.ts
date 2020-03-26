@@ -7,14 +7,13 @@ import { ListComponent } from './annonces/list/list.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: 'annonces', component: ListComponent },
-  { path: 'annonces/:id',      component: DetailComponent },
+  { path: 'annonces/:id', component: DetailComponent },
   { path: '',
     redirectTo: '/annonces',
     pathMatch: 'full'
   },
-  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

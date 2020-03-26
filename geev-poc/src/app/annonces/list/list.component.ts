@@ -25,12 +25,12 @@ export class ListComponent implements OnInit {
   getAnnonces(): any {
     return this.annoncesService.getAnnonces(this.pageNumber, this.limit)
     .subscribe(annonces => {
-          this.annoncesData.push(annonces)
+        this.annoncesData.push(annonces)
     })
   }
 
   getDetail(currentAnnonce: Annonce){
-    this.router.navigate(['/annonces/'+ currentAnnonce.id, { currentAnnonce }]);
+    this.router.navigate(['/annonces', { annonce : currentAnnonce }]);
   }
 
 }

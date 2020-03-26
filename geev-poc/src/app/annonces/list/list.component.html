@@ -1,8 +1,8 @@
   <div class="container">
-    <h1 class="title-geev">GEEV</h1>
+    <img class="title-geev" align="middle" src="/assets/geev_logo.png" routerLink="/annonces">
         <div class="row"  *ngFor="let annonce of annoncesData">
           <div class="col-sm" *ngFor="let item of annonce">
-            <img class="rounded" (click)="getDetail(item)" src="{{item.pictures}}"/>
+            <img class="rounded" [routerLink]="['/annonces', item.id]" (click)="getDetail(item)" src="{{item.pictures}}"/>
             <h5 class="title-item">{{item.title}}</h5>
           </div>
         </div>

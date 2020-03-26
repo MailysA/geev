@@ -1,8 +1,11 @@
 .title-geev{
-    text-align: center;
-    width:100%;
+    width:30%;
+    text-align: middle;
+    margin: 50px 350px;
 }
 
 .title-item{
     text-align: center;
+    font-family: 'Vernon Adams';
+    font-style: bold;
 }

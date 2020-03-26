@@ -6,7 +6,7 @@ export class Annonce {
     pictures: Array<String>
 
     constructor(json: Object){
-        this.id = json['id'],
+        this.id = json['_id'],
         this.title = json['title']
         this.pictures = json['pictures']
     }
