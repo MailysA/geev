@@ -3,7 +3,7 @@
         <div class="row"  *ngFor="let annonce of annoncesData">
           <div class="col-sm" *ngFor="let item of annonce">
             <img class="rounded" (click)="getDetail(item)" src="{{item.pictures}}"/>
-            <h5>{{item.title}}</h5>
+            <h5 class="title-item">{{item.title}}</h5>
           </div>
         </div>
 </div>
